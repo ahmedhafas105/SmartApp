@@ -1,0 +1,38 @@
+{
+    "version": 1,
+    "author": "Wokwi AI",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+      { "type": "wokwi-led", "id": "led1", "top": -70, "left": 150, "attrs": { "color": "red" } },
+      { "type": "wokwi-buzzer", "id": "bz1", "top": -70, "left": 220, "attrs": {} },
+      { "type": "wokwi-mq135", "id": "mq135", "top": 50, "left": 200, "attrs": {} },
+      {
+        "type": "wokwi-gas-sensor",
+        "id": "gas1",
+        "top": -13.6,
+        "left": -121.9,
+        "rotate": 90,
+        "attrs": {}
+      },
+      { "type": "wokwi-ir-receiver", "id": "ir1", "top": -58.95, "left": 305.42, "attrs": {} }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "led1:C", "esp:GND.2", "black", [ "v0" ] ],
+      [ "bz1:1", "esp:D4", "blue", [ "v0" ] ],
+      [ "bz1:2", "esp:GND.1", "black", [ "v0" ] ],
+      [ "mq135:VCC", "esp:VIN", "red", [ "h-30", "v-20" ] ],
+      [ "mq135:GND", "esp:GND.1", "black", [ "h-30", "v20" ] ],
+      [ "mq135:AOUT", "esp:D34", "purple", [ "h-20" ] ],
+      [ "esp:D2", "led1:A", "green", [ "h0" ] ],
+      [ "gas1:AOUT", "esp:D34", "green", [ "v9.6", "h28.8", "v-38.4" ] ],
+      [ "esp:GND.2", "gas1:GND", "black", [ "h0" ] ],
+      [ "gas1:VCC", "esp:VIN", "red", [ "v0" ] ],
+      [ "ir1:GND", "esp:GND.2", "black", [ "v0" ] ],
+      [ "esp:3V3", "ir1:VCC", "green", [ "v4.7", "h253.9" ] ],
+      [ "ir1:DAT", "esp:D15", "green", [ "v0" ] ]
+    ],
+    "dependencies": {}
+  }
